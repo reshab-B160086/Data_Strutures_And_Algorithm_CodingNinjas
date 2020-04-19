@@ -1,0 +1,55 @@
+/*Assume that the value of a = 1, b = 2, c = 3, ... , z = 26. You are given a numeric string S. Write a program to print the list of all possible codes that can be generated from the given string.
+Note : The order of codes are not important. Just print them in different lines.
+Input format :*/
+
+public class solution {
+
+    public static void printAllPossibleCodes(String input) {
+        // Write your code here
+        printAllPossibleCodes(input,"");
+
+    }
+    
+    private static void printAllPossibleCodes(String input, String output){
+        
+        if(input.length() == 0){
+            System.out.println(output);
+            return;
+        }
+        
+        
+        printAllPossibleCodes(input.substring(1),output+helper(input.charAt(0)+""));
+        
+        if(input.length() >= 2 && Integer.parseInt(input.substring(0,2)) <= 26 ){
+            
+            
+            printAllPossibleCodes(input.substring(2),output+helper(input.substring(0,2)));
+            
+            return;
+            
+        }else{
+            return;
+        }
+              
+    }
+    
+    
+    
+    private static String helper(String s){
+        
+        int n = Integer.parseInt(s);
+        
+        String[] arr = new String[]{"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
+        
+        return arr[n-1];
+        
+        
+        
+    }
+    
+    
+    
+    
+    
+    
+}
